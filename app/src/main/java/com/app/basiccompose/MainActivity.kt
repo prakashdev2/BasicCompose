@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
@@ -61,24 +62,28 @@ class MainActivity : ComponentActivity() {
     fun CustomText2(){
 
         Text(buildAnnotatedString {
-            withStyle(style = SpanStyle(
-                color = MaterialTheme.colors.primary,
-                fontSize = 30.sp,
-                fontWeight = FontWeight.Bold
-            )){
-                append("A")
+            withStyle(style = ParagraphStyle(textAlign = TextAlign.Center)){
+                withStyle(style = SpanStyle(
+                    color = MaterialTheme.colors.primary,
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Bold
+                )){
+                    append("A")
+                }
+
+                append("B")
+                append("C")
+                append("D")
             }
 
-            append("B")
-            append("C")
-            append("D")
-        })
+        }, modifier = Modifier.width(200.dp)
+        )
     }
 
 @Composable
 fun Greeting() {
     Column(modifier = Modifier.fillMaxSize()) {
-
+     CustomText2()
 
     }
 }
@@ -89,7 +94,7 @@ fun Greeting() {
 @Composable
 fun DefaultPreview() {
     BasicComposeTheme {
-      CustomText2()
+      Greeting()
     }
 }
 
