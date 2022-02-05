@@ -8,6 +8,8 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.selection.DisableSelection
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -40,7 +42,8 @@ class MainActivity : ComponentActivity() {
 
                     color = MaterialTheme.colors.background
                 ) {
-                   Greeting()
+                //   Greeting()
+                    CustomText4()
             }
         }
     }
@@ -93,7 +96,26 @@ fun Greeting() {
      CustomText3()
 
     }
+
 }
+
+    @Composable
+    fun CustomText4(){
+
+
+
+            SelectionContainer() {
+                Column() {
+                Text(text = "Hello World")
+                DisableSelection {
+                    Text(text = "Hello World")
+                }
+                Text(text = "Hello World")
+            }
+
+
+        }
+    }
 
 
 
