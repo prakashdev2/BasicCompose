@@ -59,9 +59,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             BasicComposeTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-
-                    color = MaterialTheme.colors.background
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                 //   color = MaterialTheme.colors.background
                 ) {
                 //   Greeting()
                 //    CustomText4()
@@ -69,7 +71,8 @@ class MainActivity : ComponentActivity() {
 //                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
 //                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
 //                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" )
-                    TextFieddemo()
+                   // TextFieddemo()
+                    GoogleButton()
             }
         }
     }
