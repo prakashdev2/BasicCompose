@@ -254,7 +254,7 @@ fun Greeting() {
         ){
             var text by remember { mutableStateOf("Type here...") }
 
-            TextField(value = text, onValueChange = { newText ->
+            OutlinedTextField(value = text, onValueChange = { newText ->
                 text = newText
             },
 
