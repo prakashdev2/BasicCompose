@@ -55,7 +55,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                 //   Greeting()
-                    CustomText4()
+                //    CustomText4()
+                    ExpandableCard()
             }
         }
     }
@@ -165,7 +166,7 @@ fun Greeting() {
             .fillMaxWidth()
             .animateContentSize(
                 animationSpec = tween(
-                    delayMillis = 300,
+                    durationMillis = 300,
                     easing = LinearOutSlowInEasing
                 )
             ),
@@ -203,6 +204,20 @@ fun Greeting() {
 
                     
                 }
+                
+                if (expandableState){
+                    Text(text = "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" ,
+                    fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                    fontWeight = FontWeight.Normal,
+                        maxLines = 4,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+                
+                
 
             }
       
