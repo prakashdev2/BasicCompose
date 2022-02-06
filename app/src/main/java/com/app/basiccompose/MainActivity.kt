@@ -2,6 +2,7 @@ package com.app.basiccompose
 
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 
@@ -19,6 +20,7 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -259,6 +261,12 @@ fun Greeting() {
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")
                         
+                    }
+                },
+                trailingIcon = {
+                    IconButton(onClick = { Toast.makeText(this@MainActivity,"Clicked",Toast.LENGTH_SHORT).show() }) {
+                        Icon(imageVector = Icons.Filled.Check, contentDescription = "Email")
+
                     }
                 }
             )
