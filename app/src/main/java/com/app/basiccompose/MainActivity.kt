@@ -12,6 +12,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
@@ -42,6 +43,7 @@ import com.app.basiccompose.ui.theme.BasicComposeTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.unit.Dp
 import com.app.basiccompose.ui.theme.Shapes
 
 class MainActivity : ComponentActivity() {
@@ -56,7 +58,10 @@ class MainActivity : ComponentActivity() {
                 ) {
                 //   Greeting()
                 //    CustomText4()
-                    ExpandableCard()
+                    ExpandableCard(title = "My Title", description ="fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" )
             }
         }
     }
@@ -157,7 +162,16 @@ fun Greeting() {
 
     @OptIn(ExperimentalMaterialApi::class)
     @Composable
-    fun ExpandableCard(){
+    fun ExpandableCard(title : String,
+                       titleFontSize : TextUnit = MaterialTheme.typography.h6.fontSize,
+                       textFontWeight : FontWeight = FontWeight.Bold,
+                        description : String,
+                        descriptionFontSize : TextUnit = MaterialTheme.typography.subtitle1.fontSize,
+                       descriptionFontWeight :FontWeight = FontWeight.Normal,
+                       descriptionMaxLines : Int = 4,
+                       shape : CornerBasedShape = Shapes.medium,
+                       padding : Dp = 12.dp
+    ){
         var expandableState by remember { mutableStateOf(false)}
         val rotateState by animateFloatAsState(
             targetValue = if (expandableState) 180f else 0f)
@@ -170,21 +184,21 @@ fun Greeting() {
                     easing = LinearOutSlowInEasing
                 )
             ),
-        shape = Shapes.medium,
+        shape = shape,
         onClick = {
             expandableState = !expandableState
         }) {
             
             Column(modifier = Modifier
                 .fillMaxWidth()
-                .padding(12.dp)
+                .padding(padding)
             ) {
                 
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(modifier = Modifier.weight(3f),
                         text = "My Title",
-                    fontSize = MaterialTheme.typography.h6.fontSize,
-                    fontWeight = FontWeight.Bold,
+                    fontSize = titleFontSize,
+                    fontWeight = textFontWeight,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis)
                     
@@ -206,13 +220,10 @@ fun Greeting() {
                 }
                 
                 if (expandableState){
-                    Text(text = "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
-                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
-                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
-                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" ,
-                    fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                    fontWeight = FontWeight.Normal,
-                        maxLines = 4,
+                    Text(text = description ,
+                    fontSize = descriptionFontSize,
+                    fontWeight = descriptionFontWeight,
+                        maxLines = descriptionMaxLines,
                         overflow = TextOverflow.Ellipsis
                     )
                 }
@@ -230,7 +241,10 @@ fun Greeting() {
     @Preview
     fun ExpandableCardPreview(){
         BasicComposeTheme {
-            ExpandableCard()
+            ExpandableCard(title = "My Title", description ="fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+                    "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+                    "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+                    "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" )
         }
 
     }
