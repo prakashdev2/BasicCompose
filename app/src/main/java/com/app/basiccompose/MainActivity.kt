@@ -273,9 +273,11 @@ fun Greeting() {
 
                     }
                 },
-               keyboardOptions = KeyboardOptions(
-                   keyboardType = KeyboardType.Email,
-                   imeAction = ImeAction.Go
+               keyboardActions = KeyboardActions(
+                   onSearch = {
+                       Toast.makeText(this@MainActivity,"Clicked",Toast.LENGTH_SHORT).show()
+                   }
+
                )
             )
         }
