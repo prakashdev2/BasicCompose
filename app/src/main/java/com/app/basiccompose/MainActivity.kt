@@ -4,18 +4,18 @@ package com.app.basiccompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.annotation.StringRes
+
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
+
 import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.foundation.verticalScroll
+
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
@@ -58,10 +58,11 @@ class MainActivity : ComponentActivity() {
                 ) {
                 //   Greeting()
                 //    CustomText4()
-                    ExpandableCard(title = "My Title", description ="fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
-                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
-                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
-                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" )
+//                    ExpandableCard(title = "My Title", description ="fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+//                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+//                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+//                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" )
+                    TextFieddemo()
             }
         }
     }
@@ -236,15 +237,40 @@ fun Greeting() {
 
     }
 
+    @Composable
+    fun TextFieddemo(){
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        ){
+            var text by remember { mutableStateOf("Type here...") }
+
+            TextField(value = text, onValueChange = { newText ->
+                text = newText
+            },
+
+                label = {
+                    Text(text = "Title")
+                },
+                singleLine = true
+            )
+        }
+
+
+    }
+
 @ExperimentalMaterialApi
     @Composable
     @Preview
     fun ExpandableCardPreview(){
         BasicComposeTheme {
-            ExpandableCard(title = "My Title", description ="fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
-                    "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
-                    "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
-                    "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" )
+//            ExpandableCard(title = "My Title", description ="fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+//                    "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+//                    "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
+//                    "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" )
+            TextFieddemo()
         }
 
     }
