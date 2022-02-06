@@ -2,6 +2,7 @@ package com.app.basiccompose
 
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -72,7 +73,13 @@ class MainActivity : ComponentActivity() {
 //                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
 //                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" )
                    // TextFieddemo()
-                    GoogleButton()
+                    GoogleButton(
+                        text = "Sign Up with Google",
+                        loadingText = "Creating Account....",
+                        onClick = {
+                            Log.d("google button","Clicked")
+                        }
+                    )
             }
         }
     }
