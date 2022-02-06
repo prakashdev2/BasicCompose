@@ -14,6 +14,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 
 import androidx.compose.foundation.shape.CornerBasedShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.foundation.text.selection.SelectionContainer
 
@@ -46,6 +48,8 @@ import com.app.basiccompose.ui.theme.BasicComposeTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.Dp
 import com.app.basiccompose.ui.theme.Shapes
 
@@ -260,7 +264,7 @@ fun Greeting() {
                 leadingIcon = {
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")
-                        
+
                     }
                 },
                 trailingIcon = {
@@ -268,7 +272,11 @@ fun Greeting() {
                         Icon(imageVector = Icons.Filled.Check, contentDescription = "Email")
 
                     }
-                }
+                },
+               keyboardOptions = KeyboardOptions(
+                   keyboardType = KeyboardType.Email,
+                   imeAction = ImeAction.Go
+               )
             )
         }
 
