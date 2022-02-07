@@ -11,6 +11,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -69,18 +70,34 @@ import coil.transform.RoundedCornersTransformation
 import com.app.basiccompose.ui.theme.Shapes
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             BasicComposeTheme {
+                val sections = listOf("A","B","C","D","E","G","H")
                 val personRespositery = PersonRespositery()
                 val getAllData = personRespositery.getAllItem()
                 LazyColumn(contentPadding = PaddingValues(all = 12.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)){
-                    items(items = getAllData){ person ->
-                        CustomItem(person = person)
+
+                    sections.forEach {section ->
+                        stickyHeader { 
+                            Text(modifier = Modifier
+                                .fillMaxWidth()
+                                .background(Color.LightGray)
+                                .padding(12.dp),
+                                text = "Section $sections")
+                        }
+                        items(10){
+                            Text(text = "Item $it from the section $section")
+                        }
 
                     }
+//                    items(items = getAllData){ person ->
+//                        CustomItem(person = person)
+//
+//                    }
                 }
                 // A surface container using the 'background' color from the theme
 //                Column(
