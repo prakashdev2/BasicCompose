@@ -14,6 +14,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 
 import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -71,13 +73,22 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BasicComposeTheme {
+                val personRespositery = PersonRespositery()
+                val getAllData = personRespositery.getAllItem()
+                LazyColumn(contentPadding = PaddingValues(all = 12.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)){
+                    items(items = getAllData){ person ->
+                        CustomItem(person = person)
+
+                    }
+                }
                 // A surface container using the 'background' color from the theme
-                Column(
-                    modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
+//                Column(
+//                    modifier = Modifier.fillMaxSize(),
+//                    verticalArrangement = Arrangement.Center,
+//                    horizontalAlignment = Alignment.CenterHorizontally
                  //   color = MaterialTheme.colors.background
-                ) {
+       //         ) {
                 //   Greeting()
                 //    CustomText4()
 //                    ExpandableCard(title = "My Title", description ="fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
@@ -93,8 +104,8 @@ class MainActivity : ComponentActivity() {
 //                        }
 //                    )
                  //   CoilImage()
-                    PasswordTextField()
-            }
+                 //   PasswordTextField()
+          //  }
         }
     }
 }
