@@ -50,10 +50,16 @@ import com.app.basiccompose.ui.theme.BasicComposeTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.Dp
+import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
+import coil.transform.BlurTransformation
+import coil.transform.CircleCropTransformation
+import coil.transform.GrayscaleTransformation
+import coil.transform.RoundedCornersTransformation
 import com.app.basiccompose.ui.theme.Shapes
 
 class MainActivity : ComponentActivity() {
@@ -307,9 +313,22 @@ fun Greeting() {
             val painter = rememberImagePainter(
                 data = "https://avatars.githubusercontent.com/u/14994036?v=4",
                     builder = {
+                        placeholder(R.drawable.ic_google_logo)
+                        error(R.drawable.ic_google_logo)
+                        crossfade(1000)
+                        transformations(
+                            GrayscaleTransformation(),
+           //                 CircleCropTransformation(),
+                            BlurTransformation(LocalContext.current),
+                            RoundedCornersTransformation(50f)
+                        )
 
             })
+            val painterState = painter.state
             Image(painter = painter, contentDescription ="Logo Image" )
+//            if(painterState is ImagePainter.State.Loading){
+//                CircularProgressIndicator()
+//            }
 
         }
 
