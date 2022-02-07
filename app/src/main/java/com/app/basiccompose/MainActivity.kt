@@ -55,6 +55,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.Dp
 import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
@@ -361,7 +363,10 @@ fun Greeting() {
                         Icon(painter = icon, contentDescription ="Visibility" )
                         
                     }
-                }
+                },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                visualTransformation = if (passwordVisibility) VisualTransformation.None
+            else PasswordVisualTransformation()
             )
 
         }
