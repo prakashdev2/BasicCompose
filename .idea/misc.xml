@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MyProject/Compose/BasicCompose/app/src/main/res/drawable/ic_baseline_visibility_24.xml" value="0.1145" />
+        <entry key="..\:/MyProject/Compose/BasicCompose/app/src/main/res/drawable/ic_baseline_visibility_off_24.xml" value="0.1145" />
         <entry key="..\:/MyProject/Compose/BasicCompose/app/src/main/res/drawable/ic_google_logo.xml" value="0.1145" />
       </map>
     </option>

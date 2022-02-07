@@ -48,9 +48,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.app.basiccompose.ui.theme.BasicComposeTheme
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.Dp
@@ -88,7 +90,8 @@ class MainActivity : ComponentActivity() {
 //                            Log.d("google button","Clicked")
 //                        }
 //                    )
-                    CoilImage()
+                 //   CoilImage()
+                    PasswordTextField()
             }
         }
     }
@@ -335,6 +338,36 @@ fun Greeting() {
 
     }
 
+    @Composable
+    fun PasswordTextField(){
+        Column(modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center) {
+            var password by rememberSaveable { mutableStateOf("") }
+            var passwordVisibility by remember { mutableStateOf(false)}
+
+            val icon = if (passwordVisibility)
+                painterResource(id = R.drawable.ic_baseline_visibility_24)
+            else
+                painterResource(id = R.drawable.ic_baseline_visibility_off_24)
+
+            OutlinedTextField(value = password, onValueChange = {
+                password = it
+            },
+                placeholder = { Text(text = "Password")},
+                label = { Text(text = "Password")},
+                trailingIcon = {
+                    IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
+                        Icon(painter = icon, contentDescription ="Visibility" )
+                        
+                    }
+                }
+            )
+
+        }
+
+    }
+
 
 @ExperimentalMaterialApi
     @Composable
@@ -347,7 +380,8 @@ fun Greeting() {
 //                    "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" )
             //
         // TextFieddemo()
-            CoilImage()
+          //  CoilImage()
+            PasswordTextField()
         }
 
     }
