@@ -11,6 +11,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 
@@ -52,6 +53,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.Dp
+import coil.compose.rememberImagePainter
 import com.app.basiccompose.ui.theme.Shapes
 
 class MainActivity : ComponentActivity() {
@@ -73,13 +75,14 @@ class MainActivity : ComponentActivity() {
 //                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
 //                            "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" )
                    // TextFieddemo()
-                    GoogleButton(
-                        text = "Sign Up with Google",
-                        loadingText = "Creating Account....",
-                        onClick = {
-                            Log.d("google button","Clicked")
-                        }
-                    )
+//                    GoogleButton(
+//                        text = "Sign Up with Google",
+//                        loadingText = "Creating Account....",
+//                        onClick = {
+//                            Log.d("google button","Clicked")
+//                        }
+//                    )
+                    CoilImage()
             }
         }
     }
@@ -295,6 +298,25 @@ fun Greeting() {
 
     }
 
+    @Composable
+    fun CoilImage(){
+        Box( modifier = Modifier
+            .height(150.dp)
+            .width(150.dp),
+        contentAlignment = Alignment.Center) {
+            val painter = rememberImagePainter(
+                data = "https://avatars.githubusercontent.com/u/14994036?v=4",
+                    builder = {
+
+            })
+            Image(painter = painter, contentDescription ="Logo Image" )
+
+        }
+
+
+    }
+
+
 @ExperimentalMaterialApi
     @Composable
     @Preview
@@ -304,7 +326,9 @@ fun Greeting() {
 //                    "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
 //                    "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" +
 //                    "fggg  sgjlgj kj  sjglsjgl jslgjjjl sgjsgjgkl" )
-            TextFieddemo()
+            //
+        // TextFieddemo()
+            CoilImage()
         }
 
     }
